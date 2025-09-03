@@ -9,10 +9,15 @@ export default function MainPage(){
     //이미지
     //이름
 
+    
+
 
     return(
         <>
-        
+            {/* 로그인 */}
+
+            {/* 게시판 -> DataGrid */}
+            
         </>
     );
 }
