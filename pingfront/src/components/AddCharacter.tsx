@@ -8,7 +8,6 @@ export default function AddCharacter() {
     const [open, setOpen] = useState(false); 
     const [charcter, setCharcter] = useState<Character>({
         name: "",
-        motive: "",
         season: 0,
         tool: "",
         skill: ""

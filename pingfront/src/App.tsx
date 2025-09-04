@@ -1,6 +1,8 @@
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material"
 import MainPage from "./pages/MainPage"
 import './App.css'
+import EditCharacter from "./components/EditCharacter"
+
 
 function App() {
   /*header*/
@@ -20,6 +22,7 @@ function App() {
             justifyContent: 'center',
           }}
           elevation={1}
+          position="static"
         >
           <Toolbar >
             <Typography variant="h4" sx={{ fontWeight: 'bold', mr: 3}}>티니핑 월드</Typography>
@@ -34,6 +37,7 @@ function App() {
               </Box>
           </Toolbar>
         </AppBar>
+        <Toolbar/>
         <MainPage />
       </Container>
     </>
