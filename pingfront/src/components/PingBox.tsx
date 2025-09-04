@@ -1,19 +1,10 @@
 import { Box, Stack, Typography } from "@mui/material";
 import PingDialogContents from "./PingDialogContents";
-import type { Ping } from "../type";
 import { useState } from "react";
+import type { Ping } from "../type";
+
 
 export default function PingBox(){
-
-
-    const [ping, setPing] = useState<Ping>({
-        name: "",
-        season: 0,
-        tool: "",
-        skill: ""
-    });
-
-    
 
     const data =[{
         id: 1,
@@ -36,15 +27,19 @@ export default function PingBox(){
         tool: "도구3",
         skill: "큐티"
     }];
+    
+    const [ping, setPing] = useState<Ping>({
+        name: "",
+        season: 0,
+        tool: "",
+        skill: ""
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;//어떤 값을 넣었는지
         const name = e.target.name;//어떤 입력창에
         setPing({...ping, [name]: value})//수정후 새객체
     }
-
-    
-
 
     return(
         <>
@@ -59,7 +54,7 @@ export default function PingBox(){
                     padding: '16px',
                     backgroundColor: '#fdfdfd',
                     }}
-                    onClick={PingDialogContents({ item, handleChange })}
+                    onClick={() => PingDialogContents({ping:item, handleChange:handleChange})}
                 >
                     
                     <Typography><strong>이름:</strong> {item.name}</Typography>

@@ -1,5 +1,6 @@
-import { Stack, TextField } from "@mui/material";
+import { Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField } from "@mui/material";
 import type { Ping } from "../type";
+import { useState } from "react";
 
 type PingDialogContentsProps = {
     ping: Ping;
@@ -7,9 +8,21 @@ type PingDialogContentsProps = {
 }
 
 export default function PingDialogContents({ping, handleChange}: PingDialogContentsProps) {
+    
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
     return (
         <>
-        <Stack spacing={2} mt={1}>
+        <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>
+
+            </DialogTitle>
+            <DialogContent>
+                <Stack spacing={2} mt={1}>
                 <TextField 
                     label="번호"
                     name="id"
@@ -41,6 +54,14 @@ export default function PingDialogContents({ping, handleChange}: PingDialogConte
                     onChange={handleChange}
                 />
             </Stack>
+            </DialogContent>
+            <DialogActions>
+
+            </DialogActions>
+        </Dialog>
+
+
+        
         </>
     );
 }
