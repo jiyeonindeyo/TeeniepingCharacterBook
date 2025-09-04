@@ -1,7 +1,8 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Snackbar, Stack, Typography } from "@mui/material";
 import EditPing from "./EditPing";
 import type { Ping } from "../type";
 import { useState } from "react";
+import { deletePing} from "../api/PingApi";
 
 type PingBoxProps = {
     data: Ping[];
@@ -9,6 +10,10 @@ type PingBoxProps = {
 }
 
 export default function PingBox({data, loadPingData}: PingBoxProps){
+
+    const [toastVal, setToastVal] = useState({
+        open: false, msg: '',
+    })
     const data1 =[{
         id: 1,
         name: "예주",
@@ -24,10 +29,15 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
         skill: "스킬3"
     }];
 
-    const [isEditOpen, setIsEditOpen] = useState(false);
-    
-    const handleClick = () => {
-        setIsEditOpen(true);
+    const deletePingData = (id: number) => {
+        if(confirm(`${id}번 데이터를 삭제하겠습니까?`)){
+            deletePing(id)
+        .then(res => {
+            loadPingData();
+            setToastVal({open: true, msg: `${res}번 데이터가 삭제되었습니다.`})
+        })
+        .catch(err => console.log(err));
+        }
     }
 
     return(
@@ -44,10 +54,20 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                     backgroundColor: '#fdfdfd',
                     }}
                 >
-                    <Box sx={{ display: 'flex', ml: 7 }}>
-                        <Button onClick={handleClick}>수정</Button>
-                        {isEditOpen && <EditPing item={item} loadPingData={loadPingData} />}
-                        <Button>삭제</Button>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', ml: 7 }}>
+                        <EditPing item={item} loadPingData={loadPingData} />
+                        <Button 
+                            sx={{
+                                minWidth: 'unset', 
+                                width: '40px',
+                                color: 'grey',             
+                                '&:hover': {
+                                color: '#FF4C4C' 
+                                }
+                            }}
+                            size="small"
+                            onClick={() => deletePingData(item.id)}
+                            >삭제</Button>
                     </Box>
                     <img width={180} height={170} src={`${item.name}.png`} />
                     <Typography><strong>이름:</strong> {item.name}</Typography>
@@ -57,6 +77,13 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                 </Box>
                 ))}
             </Stack>
+            <Snackbar
+                open={toastVal.open}
+                onClose={() => setToastVal({open: false, msg: ''})}
+                message={toastVal.msg}
+                autoHideDuration={2000}
+
+            />
             
         </>
     );

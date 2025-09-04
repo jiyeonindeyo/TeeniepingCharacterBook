@@ -15,23 +15,23 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 
 // //캐릭터 목록 조회
-export const getping = async (): Promise<Ping[]> => {
+export const getPing = async (): Promise<Ping[]> => {
     const res = await axios.get(`${BASE_URL}`);
     return res.data;
 }
 
 // //캐릭터 생성
-export const addping = async (ping: Ping): Promise<Ping> => {
+export const addPing = async (ping: Ping): Promise<Ping> => {
     const res = await axios.post(`${BASE_URL}`, ping);
     return res.data;
 }
 // //캐릭터 수정
-export const editping = async (ping: Ping): Promise<Ping> => {
+export const editPing = async (ping: Ping): Promise<Ping> => {
     const res = await axios.put(`${BASE_URL}`, ping);
     return res.data;
 }
 // //캐릭터 삭제
-export const deleteping = async (id: number): Promise<Ping> => {
+export const deletePing = async (id: number): Promise<Ping> => {
     const res = await axios.delete(`${BASE_URL}/${id}`);
     return res.data;
 }

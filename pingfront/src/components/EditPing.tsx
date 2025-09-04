@@ -1,9 +1,8 @@
 import type { Ping } from "../type";
 import { useState } from "react";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Tooltip } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import PingDialogContents from "./PingDialogContents";
-import EditIcon from '@mui/icons-material/Edit';
-import { editping } from "../api/PingApi";
+import { editPing } from "../api/PingApi";
 
 type EditPingProps = {
     item: Ping;
@@ -40,7 +39,7 @@ export default function EditPing({item, loadPingData}: EditPingProps){
     const handleClose = () => {setOpen(false)};
 
     const handleSave = async () => {
-        await editping(ping);
+        await editPing(ping);
         // car list reload => 부모에게 받아와야함 -> 매개변수로 받아와서 사용
         loadPingData(); //updateCar()에 대한 신호가 온 뒤 loadCarData() 실행됨
         setPing({
@@ -56,11 +55,19 @@ export default function EditPing({item, loadPingData}: EditPingProps){
     return (
         <>
             {/* 모달 Dialog */}
-            <Tooltip title='수정'>
-                <IconButton size='small' onClick={handleOpen}>
-                    <EditIcon/>
-                </IconButton>
-            </Tooltip>
+            <Button 
+                //버튼 색, hover , 크기
+                sx={{
+                    minWidth: 'unset',
+                    width: '40px',
+                    color: 'grey',             
+                    '&:hover': {
+                    color: '#FF4C4C' 
+                    }
+                }}
+                size="small" 
+                onClick={handleOpen}>
+                수정</Button>
             <Dialog 
                 open={open} 
                 onClose={handleClose}

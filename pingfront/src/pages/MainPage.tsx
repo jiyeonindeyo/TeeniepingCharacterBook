@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getping } from "../api/PingApi";
+import { getPing } from "../api/PingApi";
 import PingBox from "../components/PingBox";
 import type { Ping } from "../type";
 
@@ -16,7 +16,7 @@ export default function MainPage(){
     const [ping, setPing] = useState<Ping[]>([]);
 
     const loadPingData = () => {
-        getping()
+        getPing()
         .then(res => setPing(res))
         .catch(err => console.log(err));
     };
