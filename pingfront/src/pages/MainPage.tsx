@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+import { getping } from "../api/PingApi";
 import PingBox from "../components/PingBox";
+import type { Ping } from "../type";
 
 
 export default function MainPage(){
@@ -10,14 +13,20 @@ export default function MainPage(){
     /*게시판 모달 구성*/
     //이미지
     //이름
+    const [ping, setPing] = useState<Ping[]>([]);
 
-
-    
-
+    const loadPingData = () => {
+        getping()
+        .then(res => setPing(res))
+        .catch(err => console.log(err));
+    };
+    useEffect(() => {
+        loadPingData();
+    }, []);
 
     return(
         <>
-            <PingBox />
+            <PingBox data={ping} loadPingData={loadPingData}/>
         </>
     );
 };
