@@ -9,15 +9,37 @@ export default function MainPage(){
     //이미지
     //이름
 
+
+
+    const data =[{
+        id: 1,
+        name: "예주",
+        motive: "고양이",
+        season: 0,
+        tool: "사랑의 매",
+        skill: "사자후"
+    }];
+
     
 
 
     return(
         <>
-            {/* 로그인 */}
-
-            {/* 게시판 -> DataGrid */}
-            
+            <table>
+                <tbody>
+                    {
+                    data.map((item) =>
+                        <tr key={item.id}>
+                            <td>{item.name}</td>
+                            <td>{item.motive}</td>
+                            <td>{item.season}</td>
+                            <td>{item.tool}</td>
+                            <td>{item.skill}</td>
+                        </tr>)
+                    }
+                </tbody>
+            </table>
         </>
     );
-}
+};
+

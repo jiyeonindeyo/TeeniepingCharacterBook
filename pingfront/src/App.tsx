@@ -1,4 +1,4 @@
-import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material"
 import MainPage from "./pages/MainPage"
 import './App.css'
 
@@ -13,6 +13,7 @@ function App() {
       <Container >
         <AppBar
           sx={{
+
             backgroundColor: '#fbafc9ff',
             height: '100px',
             display: 'flex',
@@ -27,6 +28,10 @@ function App() {
               <Typography>티니핑 월드2</Typography>
               <Typography>티니핑 월드3</Typography>
             </Box>
+            <Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
+                <Button>로그인</Button>
+                <Button>로그아웃</Button>
+              </Box>
           </Toolbar>
         </AppBar>
         <MainPage />
