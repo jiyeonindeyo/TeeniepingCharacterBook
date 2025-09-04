@@ -1,12 +1,12 @@
 import { useState } from "react";
-import type { Character } from "../type";
+import type { Ping } from "../type";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import CharacterDialogContents from "./CharacterDialogContents";
+import PingDialogContents from "./PingDialogContents";
 
-export default function AddCharacter() {
+export default function Addping() {
     //모달창 op/cl
     const [open, setOpen] = useState(false); 
-    const [character, setCharcter] = useState<Character>({
+    const [ping, setPing] = useState<Ping>({
         name: "",
         season: 0,
         tool: "",
@@ -17,10 +17,10 @@ export default function AddCharacter() {
     const handleClose = () => setOpen(false);
 
     const handleSave = async () => {
-       // await charaterApi에서 addCharacter 받아오기
-       await addCharacter(character);
-       loadCharacterData();
-       setCharcter({
+       // await charaterApi에서 addping 받아오기
+       await addPing(ping);
+       loadPingData();
+       setPing({
             name: "",
             season: 0,
             tool: "",
@@ -35,9 +35,9 @@ export default function AddCharacter() {
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>티니핑 추가</DialogTitle>
                 <DialogContent>
-                    <CharacterDialogContents 
-                        character={character}
-                        handleChange={(e: React.ChangeEvent<HTMLInputElement>) => setCharcter({...character, [e.target.name]: e.target.value})}
+                    <PingDialogContents
+                        ping={ping}
+                        handleChange={(e: React.ChangeEvent<HTMLInputElement>) => setPing({...ping, [e.target.name]: e.target.value})}
                     />
                 </DialogContent>
                 <DialogActions>

@@ -1,7 +1,7 @@
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material"
 import MainPage from "./pages/MainPage"
 import './App.css'
-import EditCharacter from "./components/EditCharacter"
+
 
 
 function App() {

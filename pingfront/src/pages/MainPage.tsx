@@ -1,4 +1,5 @@
-import { Box, Stack, Typography } from "@mui/material";
+import PingBox from "../components/PingBox";
+
 
 export default function MainPage(){
     /*header*/
@@ -11,54 +12,12 @@ export default function MainPage(){
     //이름
 
 
-
-    const data =[{
-        id: 1,
-        name: "예주",
-        season: 1,
-        tool: "도구1",
-        skill: "스킬1"
-    },
-    {
-        id: 2,
-        name: "지연",
-        season: 2,
-        tool: "도구2",
-        skill: "스킬3"
-    },
-    {
-        id: 1,
-        name: "현주쌤",
-        season: 3,
-        tool: "도구3",
-        skill: "큐티"
-    }];
-
     
 
 
     return(
         <>
-            <Stack direction="row" spacing={2}>
-                {data.map((item) => (
-                <Box
-                    key={item.id}
-                    sx={{
-                    width: '180px',
-                    border: '1px solid #ccc',
-                    borderRadius: '8px',
-                    padding: '16px',
-                    backgroundColor: '#fdfdfd',
-                    }}
-                >
-                    <Typography><strong>이름:</strong> {item.name}</Typography>
-                    <Typography><strong>시즌:</strong> {item.season}</Typography>
-                    <Typography><strong>도구:</strong> {item.tool}</Typography>
-                    <Typography><strong>스킬:</strong> {item.skill}</Typography>
-                </Box>
-                ))}
-            </Stack>
-
+            <PingBox />
         </>
     );
 };

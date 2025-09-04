@@ -1,4 +1,4 @@
-export type Character = {
+export type Ping = {
     id?: number;
     name: string;
     season: number;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Character } from "../type";
+import type { Ping } from "../type";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -15,23 +15,23 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 
 // //캐릭터 목록 조회
-// export const getCharacter = async (): Promise<Character[]> => {
+// export const getping = async (): Promise<ping[]> => {
 //     const res = await axios.get("url");
 //     return res.data;
 // }
 
 // //캐릭터 생성
-export const addCharacter = async (character: Character): Promise<Character> => {
-    const res = await axios.post(`${BASE_URL}`, character);
+export const addping = async (ping: Ping): Promise<Ping> => {
+    const res = await axios.post(`${BASE_URL}`, ping);
     return res.data;
 }
 // //캐릭터 수정
-export const editCharacter = async (character: Character): Promise<Character> => {
-    const res = await axios.get(`${BASE_URL}`, character);
+export const editping = async (ping: Ping): Promise<Ping> => {
+    const res = await axios.get(`${BASE_URL}`, ping);
     return res.data;
 }
 // //캐릭터 삭제
-export const deleteCharacter = async (id: number): Promise<Character> => {
+export const deleteping = async (id: number): Promise<Ping> => {
     const res = await axios.delete(`${BASE_URL}`);
     return res.data;
 }

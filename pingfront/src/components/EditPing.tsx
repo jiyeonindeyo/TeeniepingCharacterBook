@@ -1,5 +1,9 @@
 
-export default function EditCharacter(){
+
+export default function EditPing(){
+
+    
+
     return (
         <>
         
