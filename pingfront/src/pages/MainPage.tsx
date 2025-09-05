@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getPing } from "../api/PingApi";
 import PingBox from "../components/PingBox";
 import type { Ping } from "../type";
+import { Toolbar } from "@mui/material";
+import Addping from "../components/AddPing";
 
 
 export default function MainPage(){
@@ -26,6 +28,9 @@ export default function MainPage(){
 
     return(
         <>
+            <Toolbar sx={{ justifyContent: 'flex-end'}}>
+                <Addping loadPingData={loadPingData}/>
+            </Toolbar>
             <PingBox data={ping} loadPingData={loadPingData}/>
         </>
     );

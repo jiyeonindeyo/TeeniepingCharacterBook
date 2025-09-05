@@ -8,6 +8,6 @@ export type Ping = {
 
 
 export type User = {
-    username: string;
+    userName: string;
     password: string;
 }

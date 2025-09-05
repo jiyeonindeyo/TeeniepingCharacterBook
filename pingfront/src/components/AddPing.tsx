@@ -1,9 +1,14 @@
 import { useState } from "react";
 import type { Ping } from "../type";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import {  Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import PingDialogContents from "./PingDialogContents";
+import { addPing } from "../api/PingApi";
 
-export default function Addping() {
+type AddPingProps = {
+    loadPingData: () => void;
+}
+
+export default function Addping({loadPingData}: AddPingProps) {
     //모달창 op/cl
     const [open, setOpen] = useState(false); 
     const [ping, setPing] = useState<Ping>({
@@ -31,7 +36,22 @@ export default function Addping() {
 
     return (
         <>
-            <Button onClick={handleOpen}>티니핑 추가</Button>
+            
+                <Button
+                sx={{
+                   
+                    minWidth: 'unset', 
+                    color: 'grey',             
+                    '&:hover': {
+                    color: 'red' 
+                    }
+                }}
+                onClick={handleOpen}
+                >
+                    티니핑 추가
+                </Button>
+           
+            
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>티니핑 추가</DialogTitle>
                 <DialogContent>
