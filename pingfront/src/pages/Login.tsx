@@ -2,7 +2,8 @@ import { Button, Snackbar, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { User } from "../type";
-import { red } from '@mui/material/colors';
+import { useAuthStore } from "../store";
+import { getAuthToken } from "../api/LoginApi";
 
 export default function Login(){
 
@@ -36,13 +37,12 @@ export default function Login(){
 
     }
 
-
     return(
         <>
         <Stack spacing={2} mt={2} alignItems={"center"}>
             <TextField 
                 label="ID"
-                name="username"
+                name="userName"
                 onChange={handleChange}
             />
             <TextField 

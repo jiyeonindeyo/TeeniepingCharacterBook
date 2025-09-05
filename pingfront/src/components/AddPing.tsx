@@ -36,10 +36,9 @@ export default function Addping({loadPingData}: AddPingProps) {
 
     return (
         <>
-            
-                <Button
+            <Button
                 sx={{
-                   
+                    
                     minWidth: 'unset', 
                     color: 'grey',             
                     '&:hover': {
@@ -47,17 +46,16 @@ export default function Addping({loadPingData}: AddPingProps) {
                     }
                 }}
                 onClick={handleOpen}
-                >
-                    티니핑 추가
-                </Button>
-           
-            
+            >
+                티니핑 추가
+            </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>티니핑 추가</DialogTitle>
                 <DialogContent>
                     <PingDialogContents
                         ping={ping}
-                        handleChange={(e: React.ChangeEvent<HTMLInputElement>) => setPing({...ping, [e.target.name]: e.target.value})}
+                        handleChange={(e: React.ChangeEvent<HTMLInputElement>) => 
+                                        setPing({...ping, [e.target.name]: e.target.value})}
                     />
                 </DialogContent>
                 <DialogActions>

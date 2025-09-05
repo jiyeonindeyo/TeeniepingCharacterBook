@@ -1,26 +1,8 @@
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material"
 import MainPage from "./pages/MainPage"
 import './App.css'
-import Addping from "./components/AddPing"
-
-
-
-// url 이동
-// function PrivateRoute() {
-//   return <Navigate to="/login" replace />;
-// }
-
-
-
-
-
 
 export default function App() {
-  /*header*/
-  //페이지 name
-  //내비게이션 바
-
-
   return (
     <>
       <Container >

@@ -14,20 +14,20 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
     const [toastVal, setToastVal] = useState({
         open: false, msg: '',
     })
-    const data1 =[{
-        id: 1,
-        name: "예주",
-        season: 1,
-        tool: "도구1",
-        skill: "스킬1"
-    },
-    {
-        id: 2,
-        name: "지연",
-        season: 2,
-        tool: "도구2",
-        skill: "스킬3"
-    }];
+    // const data1 =[{
+    //     id: 1,
+    //     name: "예주",
+    //     season: 1,
+    //     tool: "도구1",
+    //     skill: "스킬1"
+    // },
+    // {
+    //     id: 2,
+    //     name: "지연",
+    //     season: 2,
+    //     tool: "도구2",
+    //     skill: "스킬3"
+    // }];
 
     const deletePingData = (id: number) => {
         if(confirm(`${id}번 데이터를 삭제하겠습니까?`)){
@@ -43,7 +43,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
     return(
         <>
             <Stack direction="row" spacing={2}>
-                {data1.map((item) => (
+                {data.map((item) => (
                 <Box
                     key={item.id}
                     sx={{
@@ -66,7 +66,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                                 }
                             }}
                             size="small"
-                            onClick={() => deletePingData(item.id)}
+                            onClick={() => deletePingData(item.id!)}
                             >삭제</Button>
                     </Box>
                     <img width={180} height={170} src={`${item.name}.png`} />
