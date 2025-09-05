@@ -18,7 +18,7 @@ public class PingUser {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String username;
+    private String userName;
 
     @Column(nullable = false)
     private String password;

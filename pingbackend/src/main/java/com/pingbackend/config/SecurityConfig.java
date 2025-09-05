@@ -29,6 +29,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers("/pings/**").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling((ex) -> ex.authenticationEntryPoint(authEntryPoint));

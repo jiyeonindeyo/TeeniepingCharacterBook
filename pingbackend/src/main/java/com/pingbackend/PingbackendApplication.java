@@ -1,7 +1,9 @@
 package com.pingbackend;
 
 import com.pingbackend.entity.Ping;
+import com.pingbackend.entity.PingUser;
 import com.pingbackend.entity.repository.PingRepository;
+import com.pingbackend.entity.repository.PingUserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PingbackendApplication implements CommandLineRunner {
 
 	private final PingRepository pingRepository;
+	private final PingUserRepository pingUserRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PingbackendApplication.class, args);
@@ -37,19 +40,19 @@ public class PingbackendApplication implements CommandLineRunner {
 			log.info("pingName: {}, skill: {}", ping.getName(), ping.getSkill());
 		}
 
-//		//username : user, password: user
-//		appUserRepository.save(AppUser.builder()
-//				.username("user")
-//				.password("user")
-//				.role("USER")
-//				.build());
-//
-//		//username : admin, password: admin
-//		appUserRepository.save(AppUser.builder()
-//				.username("admin")
-//				.password("admin")
-//				.role("ADMIN")
-//				.build());
+		//username : user, password: user
+		pingUserRepository.save(PingUser.builder()
+						  .userName("user")
+					  	  .password("user")
+					 	  .role("USER")
+					 	  .build());
+
+		//username : admin, password: admin
+		pingUserRepository.save(PingUser.builder()
+						  .userName("admin")
+						  .password("admin")
+						  .role("ADMIN")
+						  .build());
 
 	}
 }

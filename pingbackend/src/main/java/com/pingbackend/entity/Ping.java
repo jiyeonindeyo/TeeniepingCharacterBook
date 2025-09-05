@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Ping {
 
     @Id
+    @Column(name="ping_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

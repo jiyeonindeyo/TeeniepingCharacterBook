@@ -43,9 +43,8 @@ export default function EditPing({item, loadPingData}: EditPingProps){
         // car list reload => 부모에게 받아와야함 -> 매개변수로 받아와서 사용
         loadPingData(); //updateCar()에 대한 신호가 온 뒤 loadCarData() 실행됨
         setPing({
-            id: 0,
             name: "",
-            season: 0,
+            season: 1,
             tool: "",
             skill: ""
         });

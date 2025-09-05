@@ -36,7 +36,6 @@ public class PingService {
 
     public PingDto addPing(PingDto pingDto) {
         Ping ping = Ping.builder()
-                        .id(pingDto.getId())
                         .name(pingDto.getName())
                         .season(pingDto.getSeason())
                         .tool(pingDto.getTool())

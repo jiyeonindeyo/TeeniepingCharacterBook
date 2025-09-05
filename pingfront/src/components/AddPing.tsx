@@ -18,6 +18,14 @@ export default function Addping({loadPingData}: AddPingProps) {
         skill: ""
     });
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {//HTML <input> 요소에서 발생한 변경 이벤트를 처리하는 함수
+
+        const name = e.target.name;//어떤 입력창에(e.target은 이벤트가 발생한 입력창, name은 그냥 name=""속성)
+        const value = e.target.value;//어떤 값을 넣었는지
+        
+        setPing({...ping, [name]: value})//넣은값으로 수정해서 새로운 객체 생성
+    }
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -38,7 +46,6 @@ export default function Addping({loadPingData}: AddPingProps) {
         <>
             <Button
                 sx={{
-                    
                     minWidth: 'unset', 
                     color: 'grey',             
                     '&:hover': {
@@ -49,13 +56,17 @@ export default function Addping({loadPingData}: AddPingProps) {
             >
                 티니핑 추가
             </Button>
-            <Dialog open={open} onClose={handleClose}>
+            <Dialog 
+                open={open} 
+                onClose={handleClose}
+                maxWidth="sm"
+                fullWidth
+            >
                 <DialogTitle>티니핑 추가</DialogTitle>
                 <DialogContent>
                     <PingDialogContents
                         ping={ping}
-                        handleChange={(e: React.ChangeEvent<HTMLInputElement>) => 
-                                        setPing({...ping, [e.target.name]: e.target.value})}
+                        handleChange={handleChange}
                     />
                 </DialogContent>
                 <DialogActions>
