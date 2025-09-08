@@ -34,6 +34,24 @@ public class PingService {
         return pings;
     }
 
+    public List<PingDto> findBySeason(Integer season) {
+
+        List<PingDto> pings = new ArrayList<>();
+
+        for (Ping ping : pingRepository.findBySeason(season)){
+            PingDto pingDto = PingDto.builder()
+                    .id(ping.getId())
+                    .name(ping.getName())
+                    .season(ping.getSeason())
+                    .tool(ping.getTool())
+                    .skill(ping.getSkill())
+                    .build();
+            pings.add(pingDto);
+        }
+        return pings;
+
+    }
+
     public PingDto addPing(PingDto pingDto) {
         Ping ping = Ping.builder()
                         .name(pingDto.getName())

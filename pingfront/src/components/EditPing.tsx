@@ -14,7 +14,7 @@ export default function EditPing({item, loadPingData}: EditPingProps){
     const [ping, setPing] = useState<Ping>({
         id: 0,
         name: "",
-        season: 0,
+        season: 1,
         tool: "",
         skill: ""
     });

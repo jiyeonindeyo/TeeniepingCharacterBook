@@ -32,6 +32,10 @@ export default function App() {
     logout();
   }
 
+  const handleSeason = () => {
+    SeasonPing();
+  }
+
   return (
     <>
       <Container >
@@ -47,11 +51,11 @@ export default function App() {
         >
           <Toolbar >
             <Typography variant="h4" sx={{ fontWeight: 'bold', mr: 3}}>티니핑 월드</Typography>
-            <Tabs sx={{ display: 'flex', gap: 2 }}>
-              <Tab label="시즌 1">navigate("/season1")</Tab>
-              <Tab label="시즌 2"></Tab>
-              <Tab label="시즌 3"></Tab>
-            </Tabs>
+
+            <Button onClick={handleSeason}>시즌 1</Button>
+            <Button onClick={handleSeason}>시즌 2</Button>
+            <Button onClick={handleSeason}>시즌 3</Button>
+
             <Box sx={{ display: 'flex', gap: 2, ml: 'auto'}}>
               {!isAuthenticated && (
                 <Button

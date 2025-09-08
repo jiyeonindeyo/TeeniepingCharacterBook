@@ -32,4 +32,9 @@ public class PingController {
     public Long deleteCar(@PathVariable Long pingId) {
         return pingService.deletePing(pingId);
     }
+
+    @GetMapping("/pings/{season}")
+    public List<PingDto> getPingsBySeason(@PathVariable Integer season) {
+        return pingService.findBySeason(season);
+    }
 }

@@ -35,7 +35,7 @@ export default function Addping({loadPingData}: AddPingProps) {
        loadPingData();
        setPing({
             name: "",
-            season: 0,
+            season: 1,
             tool: "",
             skill: ""
        });
