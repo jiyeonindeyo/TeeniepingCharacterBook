@@ -3,7 +3,7 @@ import MainPage from "./pages/MainPage"
 import './App.css'
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
 import Login from "./pages/Login"
-import type { JSX } from "react"
+import { type JSX } from "react"
 import { useAuthStore } from "./store"
 
 type PrivateRouteProps ={
@@ -21,16 +21,16 @@ function PrivateRoute({children}: PrivateRouteProps) {//children: 이 컴포넌�
 
 export default function App() {
   const navigate = useNavigate();
-  const {logout} = useAuthStore();
+  const {isAuthenticated, logout} = useAuthStore();
 
   const handleLogin = () => {
     navigate("/login"); // Login.tsx가 연결된 경로
   };
 
   const handleLogout = () => {
-        sessionStorage.setItem("jwt", "");
-        logout();
-    }
+    sessionStorage.setItem("jwt", "");
+    logout();
+  }
 
   return (
     <>
@@ -53,16 +53,19 @@ export default function App() {
               <Tab label="시즌 3"></Tab>
             </Tabs>
             <Box sx={{ display: 'flex', gap: 2, ml: 'auto'}}>
+              {!isAuthenticated && (
                 <Button
-                  sx={{
-                    color: 'white',             
-                    '&:hover': {
-                    color: 'red' 
-                    }
-                  }}
-                  onClick={handleLogin}
-                >
-                  로그인</Button>
+                sx={{
+                  color: 'white',             
+                  '&:hover': {
+                  color: 'red' 
+                  }
+                }}
+                onClick={handleLogin}
+              >
+                로그인</Button>
+              )}
+              {isAuthenticated && (
                 <Button
                   sx={{
                     color: 'white',             
@@ -73,7 +76,8 @@ export default function App() {
                   onClick={handleLogout}
                 >
                   로그아웃</Button>
-              </Box>
+              )}
+            </Box>
           </Toolbar>
         </AppBar>
         <Routes>
