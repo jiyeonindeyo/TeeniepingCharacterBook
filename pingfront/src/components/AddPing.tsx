@@ -13,10 +13,20 @@ export default function Addping({loadPingData}: AddPingProps) {
     const [open, setOpen] = useState(false); 
     const [ping, setPing] = useState<Ping>({
         name: "",
-        season: 0,
+        season: 1,
         tool: "",
-        skill: ""
+        skill: "",
+        image: ""
     });
+    const [selectedFileName, setSelectedFileName] = useState<File | null>(null);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedFileName(file);
+            // 여기서 파일 데이터를 상위로 전달하거나 상태로 저장할 수 있음
+            console.log("선택된 파일:", file.name);
+        }
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {//HTML <input> 요소에서 발생한 변경 이벤트를 처리하는 함수
 
@@ -31,7 +41,13 @@ export default function Addping({loadPingData}: AddPingProps) {
 
     const handleSave = async () => {
        // await charaterApi에서 addping 받아오기
-       await addPing(ping);
+        const formData = new FormData();
+        formData.append("ping", new Blob([JSON.stringify(ping)], {type: "application/json"}));
+        if(selectedFileName) {
+            formData.append("file", selectedFileName);
+        }
+
+       await addPing(formData);
        loadPingData();
        setPing({
             name: "",
@@ -68,6 +84,8 @@ export default function Addping({loadPingData}: AddPingProps) {
                     <PingDialogContents
                         ping={ping}
                         handleChange={handleChange}
+                        selectedFileName={selectedFileName}
+                        handleFileChange={handleFileChange}
                     />
                 </DialogContent>
                 <DialogActions>

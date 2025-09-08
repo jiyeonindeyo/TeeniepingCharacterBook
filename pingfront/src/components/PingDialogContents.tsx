@@ -3,18 +3,12 @@ import type { Ping } from "../type";
 import { useState } from "react";
 type PingDialogContentsProps = {
     ping: Ping;
+    selectedFileName: File | null;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
-export default function PingDialogContents({ ping, handleChange }: PingDialogContentsProps) {
-    const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            setSelectedFileName(file.name);
-            // 여기서 파일 데이터를 상위로 전달하거나 상태로 저장할 수 있음
-            console.log("선택된 파일:", file);
-        }
-    };
+export default function PingDialogContents({ ping, handleChange, selectedFileName, handleFileChange }: PingDialogContentsProps) {
+    
     return (
         <Stack spacing={2} mt={1}>
             {/* 파일 선택 버튼 */}
@@ -33,7 +27,7 @@ export default function PingDialogContents({ ping, handleChange }: PingDialogCon
                 />
             </Button>
             {selectedFileName && (
-                <Box>선택된 파일: {selectedFileName}</Box>
+                <Box>선택된 파일: {selectedFileName.name}</Box>
             )}
             <TextField
                 label="이름"

@@ -15,13 +15,14 @@ const getAxiosConfig = (): AxiosRequestConfig => {
 // //캐릭터 목록 조회
 export const getPing = async (): Promise<Ping[]> => {
     const res = await axios.get(`${BASE_URL}/pings`, getAxiosConfig());
+    console.log('pingApi 조회 : '+res.data);
     return res.data;
 }
 
 
 // //캐릭터 생성
-export const addPing = async (ping: Ping): Promise<Ping> => {
-    const res = await axios.post(`${BASE_URL}/pings`, ping, getAxiosConfig());
+export const addPing = async (formData: FormData): Promise<Ping> => {
+    const res = await axios.post(`${BASE_URL}/pings`, formData, getAxiosConfig());
     return res.data;
 }
 // //캐릭터 수정
@@ -38,5 +39,6 @@ export const deletePing = async (id: number): Promise<Ping> => {
 // 시즌별 조회
 export const seasonPing = async (seasonNumber: string): Promise<Ping> => {
     const res = await axios.get(`${BASE_URL}/season/${seasonNumber}`, getAxiosConfig());
+    console.log('pingApi 조회(season) : '+res.data.image+" + "+res.data.name);
     return res.data;
 }

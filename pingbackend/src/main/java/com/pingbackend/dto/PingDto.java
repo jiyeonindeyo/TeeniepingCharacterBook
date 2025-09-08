@@ -14,5 +14,6 @@ public class PingDto {
     private Integer season;
     private String tool;
     private String skill;
+    private String image;
 
 }

@@ -70,7 +70,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                             >
                                 삭제
                             </Button>
-                            <img width="100%" height={170} src={`./${item.name}.png`} />
+                            <img width="100%" height={170} src={`/api${item.image}`} />
                             <Typography><strong>이름:</strong> {item.name}</Typography>
                             <Typography><strong>시즌:</strong> {item.season}</Typography>
                             <Typography><strong>도구:</strong> {item.tool}</Typography>

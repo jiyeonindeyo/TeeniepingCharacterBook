@@ -15,8 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class PingImgService {
 
-    @Value("C:/TeeniepingCharacterBook/pingbackend")
-    private String pingImgLocation;
+    private String pingImgLocation = "C:/TeeniepingCharacterBook/pingbackend/images";
 
     private final PingImgRepository pingImgRepository;
 
@@ -40,7 +39,7 @@ public class PingImgService {
         //1.파일 시스템에 파일 업로드...
         if(!StringUtils.isEmpty(oriImgName)){
             imgName = fileService.uploadFile(pingImgLocation, oriImgName, pingImgFile.getBytes());
-            imgUrl = "/images/ping/" + imgName;
+            imgUrl = "/images/" + imgName;
         }
         pingImg.updatePingImg(oriImgName, imgName, imgUrl);
         //2.DB에 저정한 정보 저장

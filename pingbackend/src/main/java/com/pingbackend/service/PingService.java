@@ -4,6 +4,7 @@ import com.pingbackend.dto.PingDto;
 import com.pingbackend.dto.PingImgDto;
 import com.pingbackend.entity.Ping;
 import com.pingbackend.entity.PingImg;
+import com.pingbackend.entity.repository.PingImgRepository;
 import com.pingbackend.entity.repository.PingRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,19 +23,24 @@ public class PingService {
 
     private final PingImgService pingImgService;
     private final PingRepository pingRepository;
+    private final PingImgRepository pingImgRepository;
+    private final FileService fileService;
 
     public List<PingDto> findAll() {
         List<PingDto> pings = new ArrayList<>();
 
         for(Ping ping : pingRepository.findAll()){
-            PingDto pingDto = PingDto.builder()
+            PingImg pingImg = pingImgRepository.findByPingId(ping.getId());
+            PingDto.PingDtoBuilder pingDtobuilder = PingDto.builder()
                     .id(ping.getId())
                     .name(ping.getName())
                     .season(ping.getSeason())
                     .tool(ping.getTool())
-                    .skill(ping.getSkill())
-                    .build();
-            pings.add(pingDto);
+                    .skill(ping.getSkill());
+            if(pingImg != null){
+                pingDtobuilder.image(pingImg.getImgUrl());
+            }
+            pings.add(pingDtobuilder.build());
         }
         return pings;
     }
@@ -56,7 +63,7 @@ public class PingService {
 
     }
 
-    public PingDto addPing(PingDto pingDto) {
+    public PingDto addPing(PingDto pingDto, MultipartFile file) throws Exception {
         Ping ping = Ping.builder()
                         .name(pingDto.getName())
                         .season(pingDto.getSeason())
@@ -64,6 +71,10 @@ public class PingService {
                         .skill(pingDto.getSkill())
                         .build();
         Ping savedPing = pingRepository.save(ping);
+
+        PingImg pingImg = new PingImg();
+        pingImg.setPing(ping);
+        pingImgService.savePingImg(pingImg, file);
         pingDto.setId(savedPing.getId());
         return pingDto;
     }

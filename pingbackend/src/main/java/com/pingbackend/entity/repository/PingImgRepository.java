@@ -14,6 +14,8 @@ public interface PingImgRepository extends JpaRepository<PingImg, Long> {
     WHERE item_id=?
     ORDER BY item_id ASC
      */
-    List<PingImg> findByPingIdOrderByIdAsc(Long pingId);
+    PingImg findByPingIdOrderByIdAsc(Long pingId);
+
+    PingImg findByPingId(Long pingId);
 
 }
