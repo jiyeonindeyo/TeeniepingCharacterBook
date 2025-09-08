@@ -18,6 +18,7 @@ export const getPing = async (): Promise<Ping[]> => {
     return res.data;
 }
 
+
 // //캐릭터 생성
 export const addPing = async (ping: Ping): Promise<Ping> => {
     const res = await axios.post(`${BASE_URL}/pings`, ping, getAxiosConfig());
@@ -31,5 +32,11 @@ export const editPing = async (ping: Ping): Promise<Ping> => {
 // //캐릭터 삭제
 export const deletePing = async (id: number): Promise<Ping> => {
     const res = await axios.delete(`${BASE_URL}/pings/${id}`, getAxiosConfig());
+    return res.data;
+}
+
+// 시즌별 조회
+export const seasonPing = async (seasonNumber: string): Promise<Ping> => {
+    const res = await axios.get(`${BASE_URL}/season/${seasonNumber}`, getAxiosConfig());
     return res.data;
 }

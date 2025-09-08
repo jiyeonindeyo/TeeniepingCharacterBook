@@ -33,7 +33,7 @@ public class PingController {
         return pingService.deletePing(pingId);
     }
 
-    @GetMapping("/pings/{season}")
+    @GetMapping("/season/{season}")
     public List<PingDto> getPingsBySeason(@PathVariable Integer season) {
         return pingService.findBySeason(season);
     }

@@ -1,10 +1,11 @@
-import { AppBar, Box, Button, Container, Tab, Tabs, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material"
 import MainPage from "./pages/MainPage"
 import './App.css'
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
 import Login from "./pages/Login"
 import { type JSX } from "react"
 import { useAuthStore } from "./store"
+import SeasonPage from "./pages/SeasonPage"
 
 type PrivateRouteProps ={
   children: JSX.Element;
@@ -32,9 +33,11 @@ export default function App() {
     logout();
   }
 
-  const handleSeason = () => {
-    SeasonPing();
-  }
+  const handleSeason = async (seasonNumber: string) => {
+    console.log('시즌 버튼 클릭:', seasonNumber);
+    navigate(`/season/${seasonNumber}`);
+    console.log('이동할 URL:', `/season/${seasonNumber}`);
+  };
 
   return (
     <>
@@ -50,12 +53,10 @@ export default function App() {
           position="static"
         >
           <Toolbar >
-            <Typography variant="h4" sx={{ fontWeight: 'bold', mr: 3}}>티니핑 월드</Typography>
-
-            <Button onClick={handleSeason}>시즌 1</Button>
-            <Button onClick={handleSeason}>시즌 2</Button>
-            <Button onClick={handleSeason}>시즌 3</Button>
-
+            <Typography variant="h4" sx={{ fontWeight: 'bold', mr: 3 }} onClick={() => navigate('/')}>티니핑 월드</Typography>
+            <Button onClick={() => handleSeason('1')}>시즌 1</Button>
+            <Button onClick={() => handleSeason('2')}>시즌 2</Button>
+            <Button onClick={() => handleSeason('3')}>시즌 3</Button>
             <Box sx={{ display: 'flex', gap: 2, ml: 'auto'}}>
               {!isAuthenticated && (
                 <Button
@@ -87,6 +88,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<PrivateRoute><MainPage /></PrivateRoute>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/season/:seasonNumber" element={<PrivateRoute><SeasonPage /></PrivateRoute>} />
         </Routes>
         
       </Container>
