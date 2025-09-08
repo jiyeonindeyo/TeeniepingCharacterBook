@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class PingImgService {
 
-    @Value("${pingImgLocation}")
+    @Value("C:/TeeniepingCharacterBook/pingbackend")
     private String pingImgLocation;
 
     private final PingImgRepository pingImgRepository;

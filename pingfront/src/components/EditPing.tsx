@@ -16,7 +16,8 @@ export default function EditPing({item, loadPingData}: EditPingProps){
         name: "",
         season: 1,
         tool: "",
-        skill: ""
+        skill: "",
+        image: ""
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +47,8 @@ export default function EditPing({item, loadPingData}: EditPingProps){
             name: "",
             season: 1,
             tool: "",
-            skill: ""
+            skill: "",
+            image: ""
         });
         handleClose(); //모달 창 닫기
     }

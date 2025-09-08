@@ -90,11 +90,6 @@ public class PingService {
             //ItemImg 엔티티의 item 필드에 먼저 저장된 item을 set
             PingImg pingImg = new PingImg();
             pingImg.setPing(ping);
-            if(i ==0 ){
-                pingImg.setRepImgYn("Y");
-            }else {
-                pingImg.setRepImgYn("N");
-            }
 
             pingImgService.savePingImg(pingImg, pingImgFileList.get(i));
         }

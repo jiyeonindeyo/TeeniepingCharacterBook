@@ -4,6 +4,7 @@ export type Ping = {
     season: number;
     tool?: string;
     skill?: string;
+    image?: string;
 }
 
 

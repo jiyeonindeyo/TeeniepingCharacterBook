@@ -27,6 +27,8 @@ export default function PingDialogContents({ ping, handleChange }: PingDialogCon
                 <input
                     type="file"
                     hidden
+                    name="image"
+                    value={ping.image}
                     onChange={handleFileChange}
                 />
             </Button>
