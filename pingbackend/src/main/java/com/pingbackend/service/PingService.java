@@ -50,12 +50,15 @@ public class PingService {
         List<PingDto> pings = new ArrayList<>();
 
         for (Ping ping : pingRepository.findBySeason(season)){
+            PingImg pingImg = pingImgRepository.findByPingId(ping.getId()).orElse(null);
+
             PingDto pingDto = PingDto.builder()
                     .id(ping.getId())
                     .name(ping.getName())
                     .season(ping.getSeason())
                     .tool(ping.getTool())
                     .skill(ping.getSkill())
+                    .image(pingImg.getImgUrl())
                     .build();
             pings.add(pingDto);
         }
@@ -90,7 +93,9 @@ public class PingService {
         Ping ping = pingRepository.findById(pingDto.getId())
                                   .orElseThrow(EntityNotFoundException::new);
         ping.updatePing(pingDto);
-        pingImgService.updatePingImg(ping, file);
+        if(file != null){
+            pingImgService.updatePingImg(ping, file);
+        }
         return pingDto;
     }
 

@@ -56,6 +56,7 @@ export default function Addping({loadPingData}: AddPingProps) {
             skill: "",
             image: ""
        });
+        setSelectedFileName(null);
        handleClose();
     };
 

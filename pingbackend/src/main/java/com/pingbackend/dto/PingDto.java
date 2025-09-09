@@ -1,7 +1,9 @@
 package com.pingbackend.dto;
 
 import com.pingbackend.entity.Ping;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -15,5 +17,8 @@ public class PingDto {
     private Integer season;
     private String tool;
     private String skill;
+
+    @NotNull
     private String image;
+
 }

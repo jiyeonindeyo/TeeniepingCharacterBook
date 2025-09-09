@@ -37,7 +37,7 @@ public class PingController {
 //    }
     @PutMapping("/pings")
     public PingDto updateCar(@RequestPart(name = "ping") PingDto pingDto,
-                             @RequestPart(name = "file") MultipartFile file) {
+                             @RequestPart(name = "file", required = false) MultipartFile file) {
         PingDto updatedDto = null;
         try{
             updatedDto = pingService.updatePing(pingDto, file);

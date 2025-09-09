@@ -31,6 +31,7 @@ public class Ping {
     private String tool;
     private String skill;
 
+
     public void updatePing(PingDto pingDto) {
         this.name = pingDto.getName();
         this.season = pingDto.getSeason();

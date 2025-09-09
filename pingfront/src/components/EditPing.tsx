@@ -45,6 +45,7 @@ export default function EditPing({item, loadPingData}: EditPingProps){
             skill: item.skill,
             image: item.image
         });
+        // setSelectedFileName({[image]: item.image});
         setOpen(true);
     };
     const handleClose = () => {setOpen(false)};
