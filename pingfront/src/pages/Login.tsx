@@ -49,6 +49,7 @@ export default function Login(){
             <TextField 
                 label="PW"
                 name="password"
+                type="password"
                 onChange={handleChange}
             />
             <Button

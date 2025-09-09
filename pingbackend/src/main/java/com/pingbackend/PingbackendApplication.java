@@ -24,33 +24,33 @@ public class PingbackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		pingRepository.save(Ping.builder()
-								.name("예주핑")
-								.season(1)
-								.tool("아이패드")
-								.skill("메롱")
-								.build());
-		pingRepository.save(Ping.builder()
-								.name("지연핑")
-								.season(2)
-								.tool("아이폰")
-								.skill("비밀")
-								.build());
+//		pingRepository.save(Ping.builder()
+//								.name("예주핑")
+//								.season(1)
+//								.tool("아이패드")
+//								.skill("메롱")
+//								.build());
+//		pingRepository.save(Ping.builder()
+//								.name("지연핑")
+//								.season(2)
+//								.tool("아이폰")
+//								.skill("비밀")
+//								.build());
 		for (Ping ping : pingRepository.findAll()) {
 			log.info("pingName: {}, skill: {}", ping.getName(), ping.getSkill());
 		}
 
-		//username : user, password: user
-		pingUserRepository.save(PingUser.builder()
-						  .userName("user")
-					  	  .password("user")
-					 	  .build());
-
-		//username : admin, password: admin
-		pingUserRepository.save(PingUser.builder()
-						  .userName("admin")
-						  .password("admin")
-						  .build());
+//		//username : user, password: user
+//		pingUserRepository.save(PingUser.builder()
+//						  .userName("user")
+//					  	  .password("user")
+//					 	  .build());
+//
+//		//username : admin, password: admin
+//		pingUserRepository.save(PingUser.builder()
+//						  .userName("admin")
+//						  .password("admin")
+//						  .build());
 
 	}
 }

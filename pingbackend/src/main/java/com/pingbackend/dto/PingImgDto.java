@@ -14,7 +14,6 @@ public class PingImgDto {
     private String imgName;
     private String oriImgName;
     private String imgUrl;
-    private String repImgYn;
 
     private static ModelMapper modelMapper = new ModelMapper();
 
@@ -25,8 +24,8 @@ public class PingImgDto {
     }
 
     // Entity to Dto Mapper
-    public static PingDto of(Ping item) {
-        return modelMapper.map(item, PingDto.class);
+    public static PingImg of(PingImgDto pingImgDto) {
+        return modelMapper.map(pingImgDto, PingImg.class);
     }
 
     //  Dto to Entity Mapper

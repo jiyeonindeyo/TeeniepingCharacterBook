@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Container, Toolbar } from "@mui/material"
 import MainPage from "./pages/MainPage"
 import './App.css'
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
@@ -58,7 +58,16 @@ export default function App() {
           position="static"
         >
           <Toolbar >
-            <Typography variant="h4" sx={{ fontWeight: 'bold', mr: 3 }} onClick={() => navigate('/')}>티니핑 월드</Typography>
+            {/* <Typography variant="h4" sx={{ fontWeight: 'bold', mr: 3 }} onClick={() => navigate('/')}>티니핑 월드</Typography> */}
+            <Box
+              component="img"
+              sx={{
+                width: 110
+              }}
+              onClick={() => navigate("/")}
+              alt="이미지 설명"
+              src="/logo.png"
+            />
             <Button onClick={() => handleSeason('1')}>시즌 1</Button>
             <Button onClick={() => handleSeason('2')}>시즌 2</Button>
             <Button onClick={() => handleSeason('3')}>시즌 3</Button>
@@ -72,8 +81,20 @@ export default function App() {
                   }
                 }}
                 onClick={handleLogin}
-              >
+                >
                 로그인</Button>
+              )}
+              {!isAuthenticated && (
+                <Button
+                  sx={{
+                    color: 'white',             
+                    '&:hover': {
+                    color: 'red' 
+                    }
+                  }}
+                  onClick={handleSignUp}
+                >
+                  회원가입</Button>
               )}
               {isAuthenticated && (
                 <Button
@@ -87,16 +108,6 @@ export default function App() {
                 >
                   로그아웃</Button>
               )}
-              <Button
-                sx={{
-                  color: 'white',             
-                  '&:hover': {
-                  color: 'red' 
-                  }
-                }}
-                onClick={handleSignUp}
-              >
-                회원가입</Button>
             </Box>
           </Toolbar>
         </AppBar>

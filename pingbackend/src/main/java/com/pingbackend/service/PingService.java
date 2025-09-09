@@ -30,13 +30,13 @@ public class PingService {
         List<PingDto> pings = new ArrayList<>();
 
         for(Ping ping : pingRepository.findAll()){
-            PingImg pingImg = pingImgRepository.findByPingId(ping.getId());
+            PingImg pingImg = pingImgRepository.findByPingId(ping.getId()).orElse(null);
             PingDto.PingDtoBuilder pingDtobuilder = PingDto.builder()
-                    .id(ping.getId())
-                    .name(ping.getName())
-                    .season(ping.getSeason())
-                    .tool(ping.getTool())
-                    .skill(ping.getSkill());
+                                                            .id(ping.getId())
+                                                            .name(ping.getName())
+                                                            .season(ping.getSeason())
+                                                            .tool(ping.getTool())
+                                                            .skill(ping.getSkill());
             if(pingImg != null){
                 pingDtobuilder.image(pingImg.getImgUrl());
             }
@@ -74,15 +74,23 @@ public class PingService {
 
         PingImg pingImg = new PingImg();
         pingImg.setPing(ping);
-        pingImgService.savePingImg(pingImg, file);
+        pingImgService.savePingImg(ping, pingImg, file);
         pingDto.setId(savedPing.getId());
         return pingDto;
     }
 
-    public PingDto updatePing(PingDto pingDto) {
+//    public PingDto updatePing(PingDto pingDto, MultipartFile file) throws Exception {
+//        Ping ping = pingRepository.findById(pingDto.getId())
+//                                  .orElseThrow(EntityNotFoundException::new);
+//        ping.updatePing(pingDto);
+//        pingImgService.updatePingImg(pingDto.getId(), file);
+//        return pingDto;
+//    }
+    public PingDto updatePing(PingDto pingDto, MultipartFile file) throws Exception {
         Ping ping = pingRepository.findById(pingDto.getId())
                                   .orElseThrow(EntityNotFoundException::new);
         ping.updatePing(pingDto);
+        pingImgService.updatePingImg(ping, file);
         return pingDto;
     }
 
@@ -102,7 +110,7 @@ public class PingService {
             PingImg pingImg = new PingImg();
             pingImg.setPing(ping);
 
-            pingImgService.savePingImg(pingImg, pingImgFileList.get(i));
+            pingImgService.savePingImg(ping, pingImg, pingImgFileList.get(i));
         }
         return ping.getId();
     }

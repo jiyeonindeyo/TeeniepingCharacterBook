@@ -19,6 +19,15 @@ export default function EditPing({item, loadPingData}: EditPingProps){
         skill: "",
         image: ""
     });
+    const [selectedFileName, setSelectedFileName] = useState<File | null>(null);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedFileName(file);
+            // 여기서 파일 데이터를 상위로 전달하거나 상태로 저장할 수 있음
+            console.log("[수정] 선택된 파일:", file);
+        }
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;//어떤 값을 넣었는지
@@ -33,14 +42,20 @@ export default function EditPing({item, loadPingData}: EditPingProps){
             name: item.name,
             season: item.season,
             tool: item.tool,
-            skill: item.skill
+            skill: item.skill,
+            image: item.image
         });
         setOpen(true);
     };
     const handleClose = () => {setOpen(false)};
 
     const handleSave = async () => {
-        await editPing(ping);
+        const formData = new FormData();
+        formData.append("ping", new Blob([JSON.stringify(ping)], {type: "application/json"}));
+        if(selectedFileName) {
+            formData.append("file", selectedFileName);
+        }
+        await editPing(formData);
         // car list reload => 부모에게 받아와야함 -> 매개변수로 받아와서 사용
         loadPingData(); //updateCar()에 대한 신호가 온 뒤 loadCarData() 실행됨
         setPing({
@@ -80,6 +95,8 @@ export default function EditPing({item, loadPingData}: EditPingProps){
                     <PingDialogContents 
                         ping={ping} 
                         handleChange={handleChange}
+                        selectedFileName={selectedFileName}
+                        handleFileChange={handleFileChange}
                     />
                 </DialogContent>
                 <DialogActions>

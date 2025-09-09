@@ -1,5 +1,6 @@
 package com.pingbackend.dto;
 
+import com.pingbackend.entity.Ping;
 import lombok.*;
 
 @Getter
@@ -15,5 +16,4 @@ public class PingDto {
     private String tool;
     private String skill;
     private String image;
-
 }

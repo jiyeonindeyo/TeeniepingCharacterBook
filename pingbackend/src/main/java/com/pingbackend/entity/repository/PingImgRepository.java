@@ -4,6 +4,7 @@ import com.pingbackend.entity.PingImg;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PingImgRepository extends JpaRepository<PingImg, Long> {
 
@@ -16,6 +17,6 @@ public interface PingImgRepository extends JpaRepository<PingImg, Long> {
      */
     PingImg findByPingIdOrderByIdAsc(Long pingId);
 
-    PingImg findByPingId(Long pingId);
+    Optional<PingImg> findByPingId(Long pingId);
 
 }

@@ -14,20 +14,6 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
     const [toastVal, setToastVal] = useState({
         open: false, msg: '',
     })
-    // const data1 =[{
-    //     id: 1,
-    //     name: "예주",
-    //     season: 1,
-    //     tool: "도구1",
-    //     skill: "스킬1"
-    // },
-    // {
-    //     id: 2,
-    //     name: "지연",
-    //     season: 2,
-    //     tool: "도구2",
-    //     skill: "스킬3"
-    // }];
 
     const deletePingData = (id: number) => {
         if(confirm(`${id}번 데이터를 삭제하겠습니까?`)){
@@ -70,7 +56,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                             >
                                 삭제
                             </Button>
-                            <img width="100%" height={170} src={`/api${item.image}`} />
+                            <img width="100%" height={170} src={`http://localhost:5173/api${item.image}`} />
                             <Typography><strong>이름:</strong> {item.name}</Typography>
                             <Typography><strong>시즌:</strong> {item.season}</Typography>
                             <Typography><strong>도구:</strong> {item.tool}</Typography>
@@ -85,9 +71,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                 onClose={() => setToastVal({open: false, msg: ''})}
                 message={toastVal.msg}
                 autoHideDuration={2000}
-
-            />
-            
+            />            
         </>
     );
 }

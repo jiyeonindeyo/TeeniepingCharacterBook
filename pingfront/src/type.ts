@@ -7,7 +7,6 @@ export type Ping = {
     image?: string;
 }
 
-
 export type User = {
     userName: string;
     password: string;

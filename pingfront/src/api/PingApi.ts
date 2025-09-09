@@ -26,8 +26,8 @@ export const addPing = async (formData: FormData): Promise<Ping> => {
     return res.data;
 }
 // //캐릭터 수정
-export const editPing = async (ping: Ping): Promise<Ping> => {
-    const res = await axios.put(`${BASE_URL}/pings`, ping, getAxiosConfig());
+export const editPing = async (formData: FormData): Promise<Ping> => {
+    const res = await axios.put(`${BASE_URL}/pings`, formData, getAxiosConfig());
     return res.data;
 }
 // //캐릭터 삭제

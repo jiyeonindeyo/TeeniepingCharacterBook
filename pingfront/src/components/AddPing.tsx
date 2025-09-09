@@ -24,7 +24,7 @@ export default function Addping({loadPingData}: AddPingProps) {
         if (file) {
             setSelectedFileName(file);
             // 여기서 파일 데이터를 상위로 전달하거나 상태로 저장할 수 있음
-            console.log("선택된 파일:", file.name);
+            console.log("[추가] 선택된 파일:", file);
         }
     };
 

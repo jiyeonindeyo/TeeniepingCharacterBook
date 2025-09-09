@@ -31,9 +31,20 @@ public class PingController {
         return savedDto;
     }
 
+//    @PutMapping("/pings")
+//    public PingDto updateCar(@RequestBody PingDto pingDto) {
+//        return pingService.updatePing(pingDto);
+//    }
     @PutMapping("/pings")
-    public PingDto updateCar(@RequestBody PingDto pingDto) {
-        return pingService.updatePing(pingDto);
+    public PingDto updateCar(@RequestPart(name = "ping") PingDto pingDto,
+                             @RequestPart(name = "file") MultipartFile file) {
+        PingDto updatedDto = null;
+        try{
+            updatedDto = pingService.updatePing(pingDto, file);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return updatedDto;
     }
 
     @DeleteMapping("/pings/{pingId}")

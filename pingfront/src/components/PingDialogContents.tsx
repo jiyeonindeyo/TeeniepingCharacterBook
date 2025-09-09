@@ -1,6 +1,6 @@
 import { Box, Button, Stack, TextField } from "@mui/material";
 import type { Ping } from "../type";
-import { useState } from "react";
+
 type PingDialogContentsProps = {
     ping: Ping;
     selectedFileName: File | null;
@@ -22,8 +22,8 @@ export default function PingDialogContents({ ping, handleChange, selectedFileNam
                     type="file"
                     hidden
                     name="image"
-                    value={ping.image}
                     onChange={handleFileChange}
+                    accept="image/*" // 이미지 파일만 선택하도록 제한
                 />
             </Button>
             {selectedFileName && (

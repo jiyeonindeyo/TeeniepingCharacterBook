@@ -6,12 +6,12 @@ const BASE_URL = import.meta.env.VITE_API_URL;//- .env 파일에 정의된 환�
 
 
 export const getAuthToken = async (user: User) => {//- user 객체를 받아 로그인 요청을 보내고 토큰을 받아오는 비동기 함수
-    const response = await axios.post(`${BASE_URL}/login`, user);//axios.post(url: 요청을 보낼 API 주소, data: 서버에 전달할 데이터
+    const response = await axios.post(`${BASE_URL}/member/login`, user);//axios.post(url: 요청을 보낼 API 주소, data: 서버에 전달할 데이터
 
     return response.headers.authorization;//- 응답 헤더에서 authorization 값을 꺼내 반환
 }
 
 export const signUp = async (user: User): Promise<User> => {
-    const res = await axios.post(`${BASE_URL}/signUp`, user);
+    const res = await axios.post(`${BASE_URL}/member/signUp`, user);
     return res.data;
 }
