@@ -45,4 +45,5 @@ public class LoginController {
     public void signUp(@RequestBody PingUserDto pingUserDto) {
         userDetailsServiceImpl.saveMember(pingUserDto);
     }
+
 }
