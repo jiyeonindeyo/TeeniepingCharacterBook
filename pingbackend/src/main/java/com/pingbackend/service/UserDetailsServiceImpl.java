@@ -1,4 +1,5 @@
 package com.pingbackend.service;
+import com.pingbackend.dto.PingUserDto;
 import com.pingbackend.entity.PingUser;
 import com.pingbackend.entity.repository.PingUserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,11 +27,28 @@ public class UserDetailsServiceImpl implements UserDetailsService{
             PingUser pingUser = user.get();
             userDetails = User.withUsername(userName)
                               .password(pingUser.getPassword())
-                              .roles(pingUser.getRole())
                               .build();
         }else {
             throw new UsernameNotFoundException("User not found");
         }
         return userDetails;
     }
+
+
+    public void saveMember(PingUserDto pingUserDto) {
+        validateDuplicateMember(pingUserDto);
+        PingUser pingUser = PingUser.builder()
+                                    .userName(pingUserDto.getUserName())
+                                    .password(pingUserDto.getPassword())
+                                    .build();
+        pingUserRepository.save(pingUser);
+    }
+
+    private void validateDuplicateMember(PingUserDto pingUserDto) {
+        Optional<PingUser> foundMember = pingUserRepository.findByUserName(pingUserDto.getUserName());
+        if (foundMember.isPresent()) {
+            throw new IllegalStateException("이미 가입된 회원입니다.");
+        }
+    }
+
 }

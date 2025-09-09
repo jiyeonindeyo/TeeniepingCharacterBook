@@ -6,6 +6,7 @@ import Login from "./pages/Login"
 import { type JSX } from "react"
 import { useAuthStore } from "./store"
 import SeasonPage from "./pages/SeasonPage"
+import SignUpPage from "./pages/SignUpPage"
 
 type PrivateRouteProps ={
   children: JSX.Element;
@@ -37,6 +38,10 @@ export default function App() {
     console.log('시즌 버튼 클릭:', seasonNumber);
     navigate(`/season/${seasonNumber}`);
     console.log('이동할 URL:', `/season/${seasonNumber}`);
+  };
+
+  const handleSignUp = () => {
+    navigate("/signUp");
   };
 
   return (
@@ -82,6 +87,16 @@ export default function App() {
                 >
                   로그아웃</Button>
               )}
+              <Button
+                sx={{
+                  color: 'white',             
+                  '&:hover': {
+                  color: 'red' 
+                  }
+                }}
+                onClick={handleSignUp}
+              >
+                회원가입</Button>
             </Box>
           </Toolbar>
         </AppBar>
@@ -89,6 +104,7 @@ export default function App() {
           <Route path="/" element={<PrivateRoute><MainPage /></PrivateRoute>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/season/:seasonNumber" element={<PrivateRoute><SeasonPage /></PrivateRoute>} />
+          <Route path="/signUp" element={<SignUpPage />} />
         </Routes>
         
       </Container>

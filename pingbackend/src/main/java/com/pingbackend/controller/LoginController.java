@@ -1,23 +1,28 @@
 package com.pingbackend.controller;
 
 import com.pingbackend.dto.AccountCredentials;
+import com.pingbackend.dto.PingUserDto;
+import com.pingbackend.entity.PingUser;
 import com.pingbackend.service.JwtService;
+import com.pingbackend.service.UserDetailsServiceImpl;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/member")
 public class LoginController {
 
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final UserDetailsServiceImpl userDetailsServiceImpl;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AccountCredentials credentials) {
@@ -36,4 +41,8 @@ public class LoginController {
                 .build();
     }
 
+    @PostMapping("/signUp")
+    public void signUp(@RequestBody PingUserDto pingUserDto) {
+        userDetailsServiceImpl.saveMember(pingUserDto);
+    }
 }

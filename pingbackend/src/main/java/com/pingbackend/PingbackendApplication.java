@@ -44,14 +44,12 @@ public class PingbackendApplication implements CommandLineRunner {
 		pingUserRepository.save(PingUser.builder()
 						  .userName("user")
 					  	  .password("user")
-					 	  .role("USER")
 					 	  .build());
 
 		//username : admin, password: admin
 		pingUserRepository.save(PingUser.builder()
 						  .userName("admin")
 						  .password("admin")
-						  .role("ADMIN")
 						  .build());
 
 	}

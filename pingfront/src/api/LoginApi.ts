@@ -9,5 +9,9 @@ export const getAuthToken = async (user: User) => {//- user 객체를 받아 로
     const response = await axios.post(`${BASE_URL}/login`, user);//axios.post(url: 요청을 보낼 API 주소, data: 서버에 전달할 데이터
 
     return response.headers.authorization;//- 응답 헤더에서 authorization 값을 꺼내 반환
+}
 
+export const signUp = async (user: User): Promise<User> => {
+    const res = await axios.post(`${BASE_URL}/signUp`, user);
+    return res.data;
 }
