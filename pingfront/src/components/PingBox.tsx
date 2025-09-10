@@ -11,6 +11,7 @@ type PingBoxProps = {
 
 export default function PingBox({data, loadPingData}: PingBoxProps){
 
+    const BASE_URL = import.meta.env.VITE_API_URL;
     const [toastVal, setToastVal] = useState({
         open: false, msg: '',
     })
@@ -56,7 +57,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                             >
                                 삭제
                             </Button>
-                            <img width="100%" height={170} src={`http://localhost:5173/api${item.image}`} />
+                            <img width="100%" height={170} src={`${BASE_URL}${item.image}`} />
                             <Typography><strong>이름:</strong> {item.name}</Typography>
                             <Typography><strong>시즌:</strong> {item.season}</Typography>
                             <Typography><strong>소품:</strong> {item.tool}</Typography>
