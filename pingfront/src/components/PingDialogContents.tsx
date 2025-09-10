@@ -42,13 +42,13 @@ export default function PingDialogContents({ ping, handleChange, selectedFileNam
                 onChange={handleChange}
             />
             <TextField
-                label="도구"
+                label="소품"
                 name="tool"
                 value={ping.tool}
                 onChange={handleChange}
             />
             <TextField
-                label="스킬"
+                label="종류"
                 name="skill"
                 value={ping.skill}
                 onChange={handleChange}

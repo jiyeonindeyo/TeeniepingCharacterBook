@@ -38,7 +38,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                                 padding: '16px',
                                 backgroundColor: '#fdfdfd',
                                 width: 180,
-                                height:300
+                                height:300,
                             }}
                         >
                             <EditPing item={item} loadPingData={loadPingData} />
@@ -59,8 +59,8 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                             <img width="100%" height={170} src={`http://localhost:5173/api${item.image}`} />
                             <Typography><strong>이름:</strong> {item.name}</Typography>
                             <Typography><strong>시즌:</strong> {item.season}</Typography>
-                            <Typography><strong>도구:</strong> {item.tool}</Typography>
-                            <Typography><strong>스킬:</strong> {item.skill}</Typography>
+                            <Typography><strong>소품:</strong> {item.tool}</Typography>
+                            <Typography><strong>종류:</strong> {item.skill}</Typography>
                         </Box>
                     </Grid>
                 ))}

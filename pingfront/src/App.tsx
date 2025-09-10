@@ -68,9 +68,9 @@ export default function App() {
               alt="이미지 설명"
               src="/logo.png"
             />
-            <Button onClick={() => handleSeason('1')}>시즌 1</Button>
-            <Button onClick={() => handleSeason('2')}>시즌 2</Button>
-            <Button onClick={() => handleSeason('3')}>시즌 3</Button>
+            <Button onClick={() => handleSeason('1')} sx={{color:'white', '&:hover': {color: 'red' }}}>시즌 1</Button>
+            <Button onClick={() => handleSeason('2')} sx={{color:'white', '&:hover': {color: 'red' }}}>시즌 2</Button>
+            <Button onClick={() => handleSeason('3')} sx={{color:'white', '&:hover': {color: 'red' }}}>시즌 3</Button>
             <Box sx={{ display: 'flex', gap: 2, ml: 'auto'}}>
               {!isAuthenticated && (
                 <Button
