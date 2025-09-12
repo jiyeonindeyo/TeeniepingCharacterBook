@@ -19,4 +19,5 @@ public interface PingImgRepository extends JpaRepository<PingImg, Long> {
 
     Optional<PingImg> findByPingId(Long pingId);
 
+    void deleteByPingId(Long pingId);
 }

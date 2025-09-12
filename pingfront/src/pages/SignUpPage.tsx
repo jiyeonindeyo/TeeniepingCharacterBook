@@ -18,7 +18,8 @@ export default function SignUpPage() {
 
 
     const handleSign = () => {
-        signUp(user)
+        signUp(user);
+        alert("회원가입이 성공적으로 완료되었습니다.");
         navigate("/");//- 회원가입 성공 시 홈 페이지로 이동        
     }
 

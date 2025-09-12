@@ -100,6 +100,7 @@ public class PingService {
     }
 
     public Long deletePing(Long pingId) {
+        pingImgRepository.deleteByPingId(pingId);
         pingRepository.deleteById(pingId);
         return pingId;
     }

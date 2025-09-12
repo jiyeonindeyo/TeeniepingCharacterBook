@@ -16,12 +16,12 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
         open: false, msg: '',
     })
 
-    const deletePingData = (id: number) => {
-        if(confirm(`${id}번 데이터를 삭제하겠습니까?`)){
-            deletePing(id)
+    const deletePingData = (item: Ping) => {
+        if(confirm(`${item.name}을 삭제하겠습니까?`)){
+            deletePing(item.id!)
         .then(res => {
             loadPingData();
-            setToastVal({open: true, msg: `${res}번 데이터가 삭제되었습니다.`})
+            setToastVal({open: true, msg: `${res}번이 삭제되었습니다.`})
         })
         .catch(err => console.log(err));
         }
@@ -31,7 +31,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
         <>
             <Grid container spacing={2}>
                 {data.map((item) => (
-                    <Grid xs={12} sm={6} md={4} lg={3} key={item.id}>
+                    <Grid key={item.id}>
                         <Box
                             sx={{
                                 border: '1px solid #ccc',
@@ -53,7 +53,7 @@ export default function PingBox({data, loadPingData}: PingBoxProps){
                                 },
                                 }}
                                 size="small"
-                                onClick={() => deletePingData(item.id!)}
+                                onClick={() => deletePingData(item)}
                             >
                                 삭제
                             </Button>

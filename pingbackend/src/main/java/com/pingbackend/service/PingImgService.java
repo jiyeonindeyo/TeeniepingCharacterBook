@@ -17,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class PingImgService {
 
-    private String pingImgLocation = "C:/TeeniepingCharacterBook/pingbackend/images";
+//    private String pingImgLocation = "C:/TeeniepingCharacterBook/pingbackend/images";
+    private String pingImgLocation = "../../../../../../images";
 
     private final PingImgRepository pingImgRepository;
     private final PingRepository pingRepository;

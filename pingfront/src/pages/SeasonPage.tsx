@@ -21,7 +21,7 @@ export default function SeasonPage() {
         seasonPing(seasonNumber)
             .then(res => {
                 console.log('API 응답:', res); // 디버깅용
-                setPing(res);
+                setPing([res]);
             })
             .catch(err => {
                 console.error("시즌 데이터 로딩 실패:", err);
