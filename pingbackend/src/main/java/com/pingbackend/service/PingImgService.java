@@ -32,7 +32,7 @@ public class PingImgService {
     트랜젝션으로 묶여있기때문에 순서가 중요(파일 시스템에 저장을 하고 DB에 저장해야됨)
     1. MultipartFile에 들어있는 이미지 파일 ==>파일시스템에 저장 ==> FileService 호출
     2. DB에 저장할 ItemImg 정보==> DB에 저장 ==? ItemRepository
-     */
+    */
     public void savePingImg(Ping ping, PingImg pingImg, MultipartFile pingImgFile) throws Exception {
 
         String oriImgName = pingImgFile.getOriginalFilename();

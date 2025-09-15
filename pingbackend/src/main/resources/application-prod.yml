@@ -1,0 +1,14 @@
+spring:
+#  profiles:
+#    active: prod
+
+  datasource:
+    #실제 배포시에는 아래 주석처리한거 지워야함
+#    url: jdbc:mysql://db:3306/pingdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+#    username: root
+#    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update

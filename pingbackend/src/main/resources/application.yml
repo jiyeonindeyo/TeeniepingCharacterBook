@@ -1,16 +1,6 @@
 spring:
   application:
     name: pingbackend
-  datasource:
-    url: jdbc:mariadb://localhost:3306/pingdb
-    username: root
-    password: 1234
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-    driver-class-name: org.mariadb.jdbc.Driver
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
 
   servlet:
     multipart:
